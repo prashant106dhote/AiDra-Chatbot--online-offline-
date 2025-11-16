@@ -38,6 +38,7 @@ const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
       bg-white dark:bg-[#242124] 
       border-r border-[#80609F]/30 
       transition-all duration-300
+      // code
 
       md:relative md:flex
 
