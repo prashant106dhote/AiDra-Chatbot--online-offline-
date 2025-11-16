@@ -32,7 +32,22 @@ const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
   }
 
   return (
-    <div className={`flex flex-col h-screen min-w-72 p-5 bg-white dark:bg-[#242124] border-r border-[#80609F]/30 transition-all duration-500 max-md:absolute left-0 z-10 ${!isMenuOpen && 'max-md:-translate-x-full'}`}>
+    <div
+  className={`
+      flex flex-col h-screen min-w-72 p-5 
+      bg-white dark:bg-[#242124] 
+      border-r border-[#80609F]/30 
+      transition-all duration-300
+
+      md:relative md:flex
+
+      ${isMenuOpen 
+        ? "fixed top-0 left-0 z-50 w-64 flex" 
+        : "hidden"
+      }
+  `}
+>
+
       
       {/* Logo */}
       <img src={theme === 'dark' ? assets.logo_full : assets.logo_full_dark} alt="" className='w-full max-w-48' />
