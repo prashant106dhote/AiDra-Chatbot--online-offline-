@@ -30,7 +30,7 @@ const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
       toast.error(error.message)
     }
   }
-// ye
+// yes
   return (
     <div
   className={`
