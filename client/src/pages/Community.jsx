@@ -9,7 +9,7 @@ const Community = () => {
   const [loading, setLoading] = useState(true)
   const {axios} = useAppContext()
   const fetchImages = async () => {
-    //  yes
+    //  yess
    try {
      const {data} = await axios.get('/api/user/published-images')
      if(data.success){
