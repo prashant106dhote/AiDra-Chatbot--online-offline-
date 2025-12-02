@@ -136,7 +136,7 @@ const ChatBox = () => {
         />
         <MicButton ref={micRef} onText={(text) => setPrompt((prev) => prev + text)} />
         
-        <button disabled={loading}>
+        <button disabled={loading}>     
           <img
             src={loading ? assets.stop_icon : assets.send_icon}
             className="w-8 cursor-pointer"
