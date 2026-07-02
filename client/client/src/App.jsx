@@ -1,4 +1,4 @@
-import React ,{useState,useEffect} from 'react'
+import React ,{useState,} from 'react'
 import Sidebar from './component/Sidebar'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import ChatBot from './component/ChatBox'

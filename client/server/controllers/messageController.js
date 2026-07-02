@@ -40,11 +40,16 @@ chat.messages.push(reply)
 await chat.save();
 await User.updateOne({_id:userId},{$inc: {credits: -1}})
  
-    }catch(error){
-     res.json({success: false, message:error.message})
-    }
+    }catch (error) {
+    console.log("Status:", error.status);
+    console.log("Message:", error.message);
+    console.log("Full Error:", error);
 
-   
+    res.json({
+        success: false,
+        message: error.message
+    });
+}
 }
 
 // Image genration meassege controller

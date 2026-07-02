@@ -16,6 +16,7 @@ const ChatBox = () => {
   const [isPublished, setIsPublished] = useState(false)
 
   // Submit handler
+ 
   const onSubmit = async (e) => {
     e.preventDefault()
     if (!user) return toast('Login to send message')
@@ -108,7 +109,7 @@ const ChatBox = () => {
           />
         </label>
       )}
-
+  
       {/* Prompt input with mic */}
       <form
         onSubmit={onSubmit}
@@ -147,5 +148,6 @@ const ChatBox = () => {
     </div>
   )
 }
+
 
 export default ChatBox

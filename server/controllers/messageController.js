@@ -18,18 +18,32 @@ export const textMessageController = async(req,res)=>{
     }
         const {chatId,prompt} = req.body
 
-        const chat = await Chat.findOne({userId, _id:chatId})
-        chat.messages.push({role:"user",content:prompt,timestamp:Date.now(),isImage:false})
-       
-         const {choices } = await openai.chat.completions.create({
-         model: "gemini-2.0-flash",
-         messages: [
-        
-        {
-            role: "user",
-            content: prompt,
-        },
-    ],
+      const chat = await Chat.findOne({
+    userId,
+    _id: chatId
+});
+
+if (!chat) {
+    return res.status(404).json({
+        success: false,
+        message: "Chat not found"
+    });
+}
+
+chat.messages.push({
+    role: "user",
+    content: prompt,
+    timestamp: Date.now(),
+    isImage: false
+});
+        const { choices } = await openai.chat.completions.create({
+  model: "gemini-2.5-flash",
+  messages: [
+    {
+      role: "user",
+      content: prompt,
+    },
+  ],
 });
 
 const reply = {...choices[0].message,timestamp:Date.now(),isImage:false}
@@ -40,11 +54,22 @@ chat.messages.push(reply)
 await chat.save();
 await User.updateOne({_id:userId},{$inc: {credits: -1}})
  
-    }catch(error){
-     res.json({success: false, message:error.message})
+    }catch (error) {
+    console.error("========== ERROR ==========");
+    console.error(error);
+
+    console.error("Status:", error.status);
+    console.error("Message:", error.message);
+
+    if (error.response) {
+        console.error("Response:", error.response.data);
     }
 
-   
+    return res.status(500).json({
+        success: false,
+        message: error.message,
+    });
+}
 }
 
 // Image genration meassege controller
