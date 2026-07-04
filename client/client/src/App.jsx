@@ -34,12 +34,7 @@ const App = () => {
         </div>
       </div>
 ) : (
-  <div
-  className="relative flex items-center justify-center h-screen w-screen bg-cover bg-center bg-no-repeat"
-  style={{
-    backgroundImage: "url('/geralt-face-4776910_1920.jpg')",
-  }}
->
+  <div className='bg-gradient-to-b from-[#242124] to-[#000000] flex items-center justify-center h-screen w-screen' >
     <Login/>
   </div>
 )}
