@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { dummyPublishedImages } from '../assets/assets'
+// import { dummyPublishedImages } from '../assets/assets'
 import Loading from './Loading'
 import { useAppContext } from '../context/AppContext'
 import toast from 'react-hot-toast'
-
 const Community = () => {
   const [images, setImages] = useState([])
   const [loading, setLoading] = useState(true)
